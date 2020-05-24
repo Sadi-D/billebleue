@@ -8,15 +8,44 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import axios from 'axios';
+
 class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hidden: true,
+      products: []
     };
   }
 
+    getProducts(){
+    const url = 'http://192.168.16.2:3210/data';
+    axios.get(url)
+    .then((takeData) => {
+      console.log(takeData.data);
+      this.setState({
+        products: takeData.data,
+      })
+    })
+  };
+
   render() {
+
+    const dataMongo = this.state.dataku.map((item, index) => {
+      let array = [
+        'Nom: ',
+        item.name,
+        ', Numero agrement: ',
+        item.num_agrement,
+        ' th.',
+      ].join(' ');
+      return (
+        <Text style={{fontSize: 20, fontWeight: 'bold'}} key={index}>
+          {array}
+        </Text>
+    });
+
     return (
       <View style={styles.infoProduct}>
         <ScrollView style={styles.scrollView}>
@@ -35,8 +64,24 @@ class Product extends Component {
                 />
               </View>
               <View>
+                <TouchableOpacity
+                    style={{
+                      backgroundColor:'green', borderRadius:10,
+                      flex:1, width:100, height:50, margin:20,
+                      flexDirection:'row', justifyContent:'center',
+                      alignItems:'center'
+                    }}
+                    onPress={this.getProducts.bind(this)}
+                >
+                  <Text style={{fontSize:20,color:'white',fontWeight:'bold'}}>
+                    GET PRODUCTS
+                  </Text>
+                  <View style={{flexDirection:'column',alignItems:'center'}}>
+                    {dataMongo}
+                  </View>
+                </TouchableOpacity>
                 <Text style={styles.productTitle}> Bifteck - 250g</Text>
-                <Text>Abattage le: 07/05/2020</Text>
+                <Text>Num agrément</Text>
                 <Text>Date de découpage le 08/05/2020</Text>
               </View>
             </View>
