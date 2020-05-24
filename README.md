@@ -16,12 +16,21 @@ Commande pour lancer l'application: react-native run-android
 * Création de la base de donnée :
 `use billebleue`
 
+* vérifier présence de la nouvelle base :
+`show dbs`
+
 * creation de l'admin pour la base : 
 `db.createUser({
      user: 'teamBilleBleue',
      pwd: 'camembert',
      roles: ['readWrite', 'dbAdmin'] 
      })`
+     
+* Creation de la collection : 
+`db.createCollection('products') `
+
+* vérifier présence de la collection products :
+`show collections`    
 
 * insertion des données en base :
   pour l'item camembert :
@@ -36,10 +45,14 @@ Commande pour lancer l'application: react-native run-android
 }
 ])`
 
+* vérifier que l'item est bien en base :
+`db.products.find().pretty();`
+
 (si ça fonctionne je te rajoutte le reste des items sous cette forme)
 
 //////////////////////////
-Setup Node.js Backend Project :
+
+# Setup Node.js Backend Project :
 * aller dans backend :
 `npm i`
  
