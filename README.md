@@ -14,7 +14,7 @@ Commande pour lancer l'application: react-native run-android
 `mongo`
 
 * Création de la base de donnée :
-`use teamBilleBleue`
+`use billebleue`
 
 * creation de l'admin pour la base : 
 `db.createUser({
