@@ -14,8 +14,8 @@ mongo.connect(url, (err) => {
 app.get('/data', (req, res) => {
     mongo.connect(url, (err, db)=>{
         const collection = db.collection('products');
-        collection.find({}).toArray((x, hasil)=>{
-            res.send(hasil);
+        collection.find({}).toArray((x, results)=>{
+            res.send(results);
         });
     });
 });
