@@ -38,7 +38,6 @@ class Product extends Component {
         item.name,
         ', Numero agrement: ',
         item.num_agrement,
-        ' th.',
       ].join(' ');
       return (
         <Text style={{fontSize: 20, fontWeight: 'bold'}} key={index}>
