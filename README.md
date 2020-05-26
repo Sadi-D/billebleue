@@ -45,8 +45,34 @@ Commande pour lancer l'application: react-native run-android
 }
 ])`
 
+`db.products.insert([
+                      { name:"Biftek",
+                        num_agrement:"FR 11.058.07 nCE",
+                        label:"La Bille Bleue",
+                        date_collecte:"2020-10-13T10:53:53.000+00:00",
+                        date_transformation:"2020-10-13T10:53:53.000+00:00",
+                        type_elevage:"Petit élevage",
+                        information_elevage: [
+                          { nom_elevage:"La Ferme de Gérard",
+                            commune:"Finistère",
+                            spect_exploitation:"agriculture biologique"
+                          }
+                        ],
+                        information_animal: [
+                          { nom_animal:"Clochette",
+                            race:"Vache bretonne pie noir",
+                            age_abattage:"5 ans",
+                            lieu_naissance:"Morbihan - Ferme de Gérard",
+                            "alimentation": "Herbe frâiche / foin"
+                          }
+                        ]
+                      }
+                    ])`
+                   
+
 * vérifier que l'item est bien en base :
-`db.products.find().pretty();`
+`db.products.find().pretty();` ou `db.products.findOne({name:"Biftek"})`
+
 
 (si ça fonctionne je te rajoutte le reste des items sous cette forme)
 
