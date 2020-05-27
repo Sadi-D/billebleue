@@ -20,7 +20,7 @@ class Product extends Component {
   }
 
     getProducts(){
-    const url = 'http://192.168.16.2:3210/data';
+    const url = 'http://127.0.0.1:3210/data';
     axios.get(url)
     .then((takeData) => {
       console.log(takeData.data);
@@ -32,7 +32,7 @@ class Product extends Component {
 
   render() {
 
-    const dataMongo = this.state.dataku.map((item, index) => {
+    const dataMongo = this.state.products.map((item, index) => {
       let array = [
         'Nom: ',
         item.name,

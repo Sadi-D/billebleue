@@ -89,7 +89,7 @@ Commande pour lancer l'application: react-native run-android
 }     
  ])`
 * vérifier que l'item est bien en base :
-`db.products.find().pretty();` ou `db.products.findOne({name:"Biftek"})`
+`db.products.find().pretty();` ou `db.products.findOne({name:"Biftek"})` pour un produit spécifique.
 
 
 (si ça fonctionne je te rajoutte le reste des items sous cette forme)
