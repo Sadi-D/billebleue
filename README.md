@@ -7,3 +7,7 @@
 #Lancer l'application
 
 Commande pour lancer l'application: react-native run-android
+
+
+Schéma MongoDB ici : 
+https://my-json-server.typicode.com/sorayamoka/json-server/db/data/products
