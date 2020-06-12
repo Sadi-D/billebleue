@@ -8,18 +8,40 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-class Product extends Component {
+import axios from 'axios';
+
+class Bifteck extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hidden: true,
+      products: [],
+      productList: [],
     };
   }
 
+  componentDidMount() {
+    const url =
+      'https://my-json-server.typicode.com/sorayamoka/json-server/db/data/products';
+    axios
+      .get(url)
+      .then((res) => {
+        const productList = res.data;
+        this.setState({productList});
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
+    console.log(this.state.productList);
+
     return (
       <View style={styles.infoProduct}>
-        <ScrollView style={styles.scrollView}>
+          <ScrollView style={{paddingVertical:20, marginBottom:20}}>
+              <View style={{alignItems:'center', flex:1, justifyContent:'center'}}>
+                  <Image source={require('../img/billebleue.png')} style={{marginBottom:20}} />
+              </View>
           <View
             style={{
               backgroundColor: '#F2F5F3',
@@ -31,13 +53,14 @@ class Product extends Component {
               <View>
                 <Image
                   style={styles.productImage}
-                  source={require('../img/th.png')}
+                  source={require('../img/camembert.png')}
                 />
               </View>
+
               <View>
-                <Text style={styles.productTitle}> Bifteck - 250g</Text>
-                <Text>Abattage le: 07/05/2020</Text>
-                <Text>Date de découpage le 08/05/2020</Text>
+                <Text style={styles.productTitle}> Camembert </Text>
+                <Text>Date de collecte: 14/05/2020</Text>
+                <Text>Date de transformation: 16/05/2020</Text>
               </View>
             </View>
             <View
@@ -58,43 +81,15 @@ class Product extends Component {
               </View>
             </View>
           </View>
-          <View style={styles.details}>
-            <TouchableOpacity>
-              <Text style={{fontSize: 20}}>Informations Réglementaires</Text>
-            </TouchableOpacity>
-            {this.state.hidden === false ? (
-              <Text>- Caracteristique</Text>
-            ) : (
-              <Text />
-            )}
-          </View>
 
-          <View style={styles.details}>
-            <TouchableOpacity>
-              <Text style={{fontSize: 20}}>Type d'élevage</Text>
-            </TouchableOpacity>
-            <Text>- Caracteristique</Text>
-          </View>
-
-          <View style={styles.details}>
+          <View style={styles.elevage}>
             <TouchableOpacity>
               <Text style={{fontSize: 20}}>Information élevage</Text>
             </TouchableOpacity>
-            <Text>- Caracteristique</Text>
-          </View>
-
-          <View style={styles.details}>
-            <TouchableOpacity>
-              <Text style={{fontSize: 20}}>Informations Animal</Text>
-            </TouchableOpacity>
-            <Text>- Caracteristique</Text>
-          </View>
-
-          <View style={styles.details}>
-            <TouchableOpacity>
-              <Text style={{fontSize: 20}}>Contenus et recette</Text>
-            </TouchableOpacity>
-            <Text>- Caracteristique</Text>
+            <Text>- Nom de l'élevage: La petite ferme</Text>
+            <Text>- Type d'élevage: Petit élevage</Text>
+            <Text>- Loir et Cher</Text>
+            <Text>- Spécificité de l'exploitation: Agriculture Biologique</Text>
           </View>
         </ScrollView>
       </View>
@@ -123,16 +118,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  details: {
-    marginTop: 40,
-    borderBottomWidth: 1,
-    borderBottomColor: '#000',
-    paddingVertical: 20,
-    marginHorizontal: '5%',
-  },
+    elevage: {
+        marginTop: 20,
+        paddingVertical: 15,
+        marginHorizontal: '5%',
+    },
+
+    animal: {
+        marginTop: 20,
+        paddingVertical: 15,
+        marginHorizontal: '5%',
+        marginBottom:40,
+    },
   label: {
     textAlign: 'center',
   },
 });
 
-export default Product;
+export default Bifteck;

@@ -20,39 +20,52 @@ import {Router, Scene, Tabs} from 'react-native-router-flux';
 
 import Articles from './src/components/Articles';
 import QRCode from './src/components/QRCode';
-import Product from './src/components/Product';
+import HomePage from './src/components/HomePage';
+import Bifteck from './src/components/Bifteck';
+import Lait from './src/components/Lait';
+import Yaourt from './src/components/Yaourt';
+import Camembert from './src/components/Camembert';
 
 const App: () => React$Node = () => {
   return (
     <>
-      {/*<View style={{marginVertical: 10, marginLeft: 10}}>
-        <Image source={require('./src/img/billebleue.png')} />
-      </View>*/}
       <Router>
-        <Tabs
-          key="root"
-          tabs={true}
-          legacy={true}
-          lazy={true}
-          swipeEnabled={true}
-          tabBarPosition="bottom"
-          labelStyle={styles.labelStyle}>
-          <Scene
-            hideNavBar
-            key="articles"
-            component={Articles}
-            title="Articles"
-          />
-          <Scene
-            hideNavBar
-            key="qrcode"
-            component={QRCode}
-            title=" "
-            showLabel={false}
-            icon={() => <Image source={require('./src/img/qr_icon.png')} />}
-          />
-          <Scene hideNavBar key="product" component={Product} title="Produit" />
-        </Tabs>
+        <Scene hideNavBar>
+          <Tabs
+            key="root"
+            tabs={true}
+            legacy={true}
+            lazy={true}
+            swipeEnabled={true}
+            tabBarPosition="bottom"
+            labelStyle={styles.labelStyle}>
+            <Scene
+              hideNavBar
+              key="homepage"
+              component={HomePage}
+              title="A propos"
+            />
+            <Scene
+              hideNavBar
+              initial={true}
+              key="qrcode"
+              component={QRCode}
+              title=" "
+              showLabel={false}
+              icon={() => <Image source={require('./src/img/qr_icon.png')} />}
+            />
+            <Scene
+              hideNavBar
+              key="articles"
+              component={Articles}
+              title="Articles"
+            />
+          </Tabs>
+          <Scene key="bifteck" component={Bifteck} title="bifteck" />
+          <Scene key="yaourt" component={Yaourt} title="yaourt" />
+          <Scene key="camembert" component={Camembert} title="camembert" />
+          <Scene key="lait" component={Lait} title="lait" />
+        </Scene>
       </Router>
     </>
   );
